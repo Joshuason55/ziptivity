@@ -1,0 +1,40 @@
+.image-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -14vh;
+}
+.text-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -27vh;
+
+}
+
+#font1{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+    font-size: 2vh;
+}
+
+.logo-image{
+    width: 40%;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.text-field-container{
+    margin-top: -9vh;
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.checkbox-button{
+    color: rgb(86, 188, 108);
+}
