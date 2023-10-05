@@ -1,17 +1,8 @@
 import OpenAI from "openai";
+import {apiWeather, openai} from "../api_key/apikey"
 var currentDate = new Date()
 var currentTime = currentDate.getHours() + ":" + currentDate.getMinutes()
 
-
-const apiWeather ={
-    key: '9edb0ff4557f604c2feb4ba21ac1b771',
-    base: "https://api.openweathermap.org/data/2.5/"
-};
-
-const openai = new OpenAI({
-    apiKey: "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",
-    dangerouslyAllowBrowser: true
-});
 
 export async function fetchChatGPT(zipCode, temperature, condition) {
     try{
