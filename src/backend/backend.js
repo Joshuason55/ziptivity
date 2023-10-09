@@ -1,14 +1,24 @@
 import OpenAI from "openai";
 import {apiWeather, openai} from "../api_key/apikey"
-var currentDate = new Date()
-var currentTime = currentDate.getHours() + ":" + currentDate.getMinutes()
 
+
+function formatAMPM(date){
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
+}
 
 export async function fetchChatGPT(zipCode, temperature, condition) {
     try{
         const chatCompletion = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
-            messages: [{"role": "user", "content": `The time is ${currentTime} in the city ${zipCode}. Given that it is ${temperature} degrees Fahrenheit and ${condition}, give me 5 activities that I can do near me given the current time, weather, and location.`}],
+            messages: [{"role": "user", "content": `The time is ${formatAMPM(new Date())} in the city ${zipCode}. Given that it is ${temperature} degrees Fahrenheit and ${condition}, give me 5 activities that I can do near me given the current time, weather, and location. Please list the weather, time in 12 hour format and the zipcode in the first sentence, not in the list of activities.`}],
+
         });
         console.log(chatCompletion.choices[0].message.content);
         return chatCompletion.choices[0].message.content
