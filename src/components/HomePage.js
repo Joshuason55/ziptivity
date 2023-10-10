@@ -5,6 +5,7 @@ import { CheckCircle } from '@mui/icons-material'
 import {IconButton, TextField } from "@mui/material";
 import { fetchWeatherData} from "../backend/backend";
 import Loading from '../gif/SpeedPin.gif'
+import { Fade } from "react-reveal";
 
 function HomePage(props) {
     const[input,setInput]=useState(props.input)
@@ -62,6 +63,7 @@ function HomePage(props) {
         ?
         (
             <>
+                <Fade>
                 <div className='text-field-container'>
                     <TextField
                             label="Zip Code"
@@ -77,11 +79,12 @@ function HomePage(props) {
                         <CheckCircle className='checkbox-button' sx={{fontSize:'200%'}} />
                     </IconButton>
                 </div>
-                <div className="act-result-container">
-                    <p id="act-result-text">    
-                        {renderFormattedParagraph()}
-                    </p>
-                </div>  
+                    <div className="act-result-container">
+                        <p className="fade-in" id="act-result-text">    
+                            {renderFormattedParagraph()}
+                        </p>
+                    </div>  
+                </Fade>
             </>
         )
             :
